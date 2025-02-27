@@ -40,8 +40,8 @@ jobs:
       with:
         server_address: smtp.example.com
         server_port: 587
-        username: ${{ secrets.EMAIL_USERNAME }}
-        password: ${{ secrets.EMAIL_PASSWORD }}
+        username: ${{ Lukhanyohoho@outlook.com }}
+        password: ${{ Luk@2018 }}
         subject: Daily Test Report
         body: Test report for ${{ github.repository }} on ${{ github.run_date }}
         to: your-email@example.com
