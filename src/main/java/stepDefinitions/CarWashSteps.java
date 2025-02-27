@@ -6,6 +6,7 @@ import io.cucumber.java.en.*;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -108,10 +109,13 @@ public class CarWashSteps {
 
     @When("I click submit button")
     public void i_click_submit_button() {
-        //  WebElement submitButton = new WebDriverWait(driver, Duration.ofSeconds(10))
-        //         .until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit'][contains(.,'Submit')]")));
-        //  submitButton.click();
+        WebElement submitButton = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(By.name("add-booking")));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", submitButton);
     }
+
+
 
 
     @Then("The booking submitted successfully title should be displayed")
