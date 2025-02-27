@@ -44,6 +44,6 @@ jobs:
         password: ${{ Luk@2018 }}
         subject: Daily Test Report
         body: Test report for ${{ github.repository }} on ${{ github.run_date }}
-        to: your-email@example.com
-        from: your-email@example.com
+        to: your-Lukhanyohoho@outlook.com
+        from: your-Lukhanyohoho@outlook.com
         attachments: target/site/surefire-report.html
