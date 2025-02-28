@@ -2,8 +2,9 @@ name: Daily Tests
 
 on:
   schedule:
-    # Run at 2 AM every day
-    - cron: "0 2 * * *"
+    # Run at 5 AM every day
+    - cron: "0 5 * * *"
+
 
 jobs:
   build:
@@ -38,12 +39,12 @@ jobs:
     - name: Send email notification
       uses: dawidd6/action-send-mail@v3
       with:
-        server_address: smtp.example.com
+        server_address: smtp.office365.com
         server_port: 587
-        username: ${{ Lukhanyohoho@outlook.com }}
-        password: ${{ Luk@2018 }}
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
         subject: Daily Test Report
-        body: Test report for ${{ github.repository }} on ${{ github.run_date }}
-        to: your-Lukhanyohoho@outlook.com
-        from: your-Lukhanyohoho@outlook.com
+        body: Test report for ${{ github.repository }} on ${{ github.event.schedule }}
+        to: Lukhanyohoho@outlook.com
+        from: Lukhanyohoho@outlook.com
         attachments: target/site/surefire-report.html
