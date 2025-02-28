@@ -23,14 +23,6 @@ public class CarWashSteps {
 
     @Given("the user is on the car wash booking page")
     public void the_user_is_on_the_car_wash_booking_page() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-
-        driver = new ChromeDriver(options);
         driver.get("https://grosapack.com/carwash/");
         driver.manage().window().maximize();
     }
@@ -118,7 +110,7 @@ public class CarWashSteps {
 
     @When("I click submit button")
     public void i_click_submit_button() {
-        WebElement submitButton = new WebDriverWait(driver, Duration.ofSeconds(10))
+       WebElement submitButton = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(By.name("add-booking")));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", submitButton);
