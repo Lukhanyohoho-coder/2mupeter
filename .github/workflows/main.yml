@@ -2,14 +2,12 @@ name: Daily Tests
 
 on:
   schedule:
-    # Run at 5 AM every day
     - cron: "0 5 * * *"
+  workflow_dispatch: # Add this line to enable manual triggering
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
