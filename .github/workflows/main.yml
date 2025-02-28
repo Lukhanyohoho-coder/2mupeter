@@ -2,12 +2,11 @@ name: Daily Tests
 
 on:
   schedule:
-    # Run at 5 AM every day
-    - cron: "0 5 * * *"
+    - cron: "0 5 * * *" # Run daily at 5 AM
+  workflow_dispatch: # Allow manual triggering of the workflow
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test-report
-          path: target/site/surefire-report.html
+          path: target/site/surefire-reports/*
 
       - name: Send email notification
         uses: dawidd6/action-send-mail@v3
@@ -46,4 +45,4 @@ jobs:
           body: Test report for ${{ github.repository }} on ${{ github.event.schedule }}
           to: Lukhanyohoho@outlook.com
           from: Lukhanyohoho@outlook.com
-          attachments: target/site/surefire-report.html
+          attachments: target/site/surefire-reports/index.html
